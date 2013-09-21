@@ -3,7 +3,7 @@ package com.feedback.utilities;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Connection {
+public class DataBaseInstance {
      private static java.sql.Connection conn;
     private static String login ="root";
     private static String password ="";
