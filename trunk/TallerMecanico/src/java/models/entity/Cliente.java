@@ -8,7 +8,7 @@ package models.entity;
  *
  * @author Luis
  */
-public class cliente {
+public class Cliente {
     protected String rut;
     protected String nombre;
     protected String paterno;
