@@ -1,5 +1,3 @@
-
-
 package com.models.dao;
 
 import com.feedback.utilities.DataBaseInstance;
@@ -21,7 +19,7 @@ public class Clientedao {
 
     
 public List<Cliente>findPorNombre(String nombre){
-        List<Cliente> listaProducto = new ArrayList<Cliente>();
+        List<Cliente> listaClientes = new ArrayList<Cliente>();
         ResultSet result = null;
 
         try {
@@ -33,13 +31,13 @@ public List<Cliente>findPorNombre(String nombre){
 
             while (result.next()) {
                 Cliente cliente = new Cliente();
-                cliente.setRut(result.getString("rut"));
+                cliente.setRut(result.getString("rutcliente"));
                 cliente.setNombre(result.getString("nombre"));
-                cliente.setPaterno(result.getString("materno"));
-                cliente.setMaterno(result.getString("paterno"));
+                cliente.setPaterno(result.getString("apellidop"));
+                cliente.setMaterno(result.getString("apellidom"));
                 cliente.setTelefono(result.getInt("telefono"));
                 cliente.setEmail(result.getString("email"));
-                listaProducto.add(cliente);
+                listaClientes.add(cliente);
             }
 
             result.close();
@@ -52,14 +50,14 @@ public List<Cliente>findPorNombre(String nombre){
             System.err.println(se.getMessage());
         }
 
-        return listaProducto;
+        return listaClientes;
 
 }    
     
     
     
     public List<Cliente> findAll() {
-        List<Cliente> listaCliente = new LinkedList<Cliente>();
+        List<Cliente> listaClientes = new LinkedList<Cliente>();
         ResultSet result = null;
 
         try {
@@ -70,13 +68,13 @@ public List<Cliente>findPorNombre(String nombre){
 
             while (result.next()) {
                 Cliente cliente = new Cliente();
-                cliente.setRut(result.getString("rut"));
+                cliente.setRut(result.getString("rutcliente"));
                 cliente.setNombre(result.getString("nombre"));
-                cliente.setPaterno(result.getString("paterno"));
-                cliente.setMaterno(result.getString("materno"));
+                cliente.setPaterno(result.getString("apellidop"));
+                cliente.setMaterno(result.getString("apellidom"));
                 cliente.setTelefono(result.getInt("telefono"));
                 cliente.setEmail(result.getString("email"));
-                listaCliente.add(cliente);
+                listaClientes.add(cliente);
             }
 
             result.close();
@@ -89,7 +87,7 @@ public List<Cliente>findPorNombre(String nombre){
             System.err.println(se.getMessage());
         }
 
-        return listaCliente;
+        return listaClientes;
     }
 
     public Cliente findByRut(String clienteRut) {
@@ -112,10 +110,10 @@ public List<Cliente>findPorNombre(String nombre){
 
             // Construimos una VO para el producto.
             cliente = new Cliente();
-            cliente.setRut(result.getString("rut"));
+            cliente.setRut(result.getString("rutcliente"));
             cliente.setNombre(result.getString("nombre"));
-            cliente.setPaterno(result.getString("paterno"));
-            cliente.setMaterno(result.getString("materno"));
+            cliente.setPaterno(result.getString("apellidop"));
+            cliente.setMaterno(result.getString("apellidom"));
             cliente.setTelefono(result.getInt("telefono"));
             cliente.setEmail(result.getString("email"));
 
@@ -133,32 +131,33 @@ public List<Cliente>findPorNombre(String nombre){
 
     public void save(Cliente cliente) {
 
-        PreparedStatement saveProduct;
+        PreparedStatement saveCliente;
         try {
 
             if (cliente.getRut() == null) {
-                saveProduct = getConnection().prepareStatement(
+                saveCliente = getConnection().prepareStatement(
                         "INSERT INTO cliente (rutcliente, nombre, apellidop, apellidom, telefono , email) "
                         + "VALUES (?, ?, ?, ?, ?, ?)");
-                saveProduct.setString(1, cliente.getRut());
-                saveProduct.setString(2, cliente.getNombre());
-                saveProduct.setString(3, cliente.getPaterno());
-                saveProduct.setString(4, cliente.getPaterno());
-                saveProduct.setInt(5, cliente.getTelefono());
-                saveProduct.setString(6, cliente.getEmail());
+                saveCliente.setString(1, cliente.getRut());
+                saveCliente.setString(2, cliente.getNombre());
+                saveCliente.setString(3, cliente.getPaterno());
+                saveCliente.setString(4, cliente.getMaterno());
+                saveCliente.setInt(5, cliente.getTelefono());
+                saveCliente.setString(6, cliente.getEmail());
                 System.out.println("INSERT INTO ....");
             } else {
-                saveProduct = getConnection().prepareStatement(
-                        "UPDATE productos SET rutcliente = ?, nombre = ?, apellidop = ?, apellidom = ?, telefono = ?, email = ? WHERE  id = ?");
-                saveProduct.setString(1, cliente.getRut());
-                saveProduct.setString(2, cliente.getNombre());
-                saveProduct.setString(3, cliente.getPaterno());
-                saveProduct.setString(4, cliente.getPaterno());
-                saveProduct.setInt(5, cliente.getTelefono());
-                saveProduct.setString(6, cliente.getEmail());
+                saveCliente = getConnection().prepareStatement(
+                        "UPDATE productos SET rutcliente = ?, nombre = ?, apellidop = ?,"
+                        + " apellidom = ?, telefono = ?, email = ? WHERE  rutcliente = ?");
+                saveCliente.setString(1, cliente.getRut());
+                saveCliente.setString(2, cliente.getNombre());
+                saveCliente.setString(3, cliente.getPaterno());
+                saveCliente.setString(4, cliente.getMaterno());
+                saveCliente.setInt(5, cliente.getTelefono());
+                saveCliente.setString(6, cliente.getEmail());
             }
 
-            saveProduct.executeUpdate();
+            saveCliente.executeUpdate();
             closeConnection();
         } catch (SQLException se) {
             System.err.println("Se ha producido un error de BD.");
@@ -167,15 +166,15 @@ public List<Cliente>findPorNombre(String nombre){
     }
 
     public void delete(Cliente cliente) {
-        PreparedStatement saveProduct;
+        PreparedStatement delCliente;
         try {
 
             if (cliente.getRut() != null) {
-                saveProduct = getConnection().prepareStatement(
+                delCliente = getConnection().prepareStatement(
                         "DELETE FROM cliente WHERE rutcliente = ?");
 
-                saveProduct.setString(1, cliente.getRut());
-                saveProduct.executeUpdate();
+                delCliente.setString(1, cliente.getRut());
+                delCliente.executeUpdate();
             }
 
 

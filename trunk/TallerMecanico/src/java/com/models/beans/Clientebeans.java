@@ -7,7 +7,6 @@ import com.models.entity.Cliente;
 public class Clientebeans extends Cliente {
     
      private Clientedao clienteDao = new Clientedao();
-
     
     public List<Cliente> findPorNombre() {
         return clienteDao.findPorNombre(nombre);
