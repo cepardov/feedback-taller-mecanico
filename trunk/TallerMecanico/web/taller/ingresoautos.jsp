@@ -2,11 +2,11 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="models.beans.*, models.entity.*"%>
 
-<jsp:useBean id="producto" class="models.beans.ProductoBean" scope="request"></jsp:useBean>
+<jsp:useBean id="producto" class="models.beans.Automovilbeans" scope="request"></jsp:useBean>
 
 <jsp:setProperty property="id" name="producto" />
 
-<% Producto prod = producto.findById();%>
+<% Automovil at =new Automovil();%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,12 +19,12 @@
 
 
 <form method="post" action="<%= application.getContextPath() %>/catalogo/guardar.jsp">
-    <input type="hidden" name="id" value="<%=prod.getId()%>"/>
+    <input type="hidden" name="id" value=""/>
     <table border="1">
         <tbody>
             <tr>
                 <td><span>Nombre</span></td>
-                <td><input size="40" type="text" name="nombre" value="<%=prod.getNombre()==null?"":prod.getNombre()%>"/></td>
+                <td><input size="40" type="text" name="nombre" value="<%at.save();%>"/></td>
             </tr>
             <tr>
                 <td><span>Cantidad</span></td>
