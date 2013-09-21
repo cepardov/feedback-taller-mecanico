@@ -5,6 +5,7 @@
 <jsp:useBean id="cliente" class="com.models.beans.Clientebeans" scope="request"></jsp:useBean>
 
 <jsp:setProperty property="rut" name="cliente" />
+
 <% Cliente cli = cliente.findByRut();%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -17,7 +18,7 @@
 <h3>Formulario Clientes</h3>
 
 
-<form method="post" action="<%= application.getContextPath() %>/taller/guardar.jsp">
+<form method="post" action="<%= application.getContextPath() %>/taller/guardarclientes.jsp">
     <input type="hidden" name="rut" value="<%=cli.getRut()%>"/>
     <table border="1">
         <tbody>
@@ -45,9 +46,9 @@
                 <td><span>Email</span></td>
                 <td><input type="text" name="email" value="<%=cli.getEmail()==null?"":cli.getEmail()%>"/></td>
              </tr>
-              <tr>
+             <tr>
                 <td colspan="2"><input type="submit" name="guardar" value="Guardar"/></td>
-            </tr>
+             </tr>
         </tbody>
     </table>
 </form>
