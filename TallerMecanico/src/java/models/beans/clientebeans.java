@@ -1,13 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package models.beans;
 
-/**
- *
- * @author Luis
- */
-public class clientebeans {
-    
+import java.util.List;
+import models.dao.clientedao;
+import models.entity.cliente;
+
+public class clientebeans extends cliente {
+       private clientedao clienteDao = new clientedao();
+       
 }
