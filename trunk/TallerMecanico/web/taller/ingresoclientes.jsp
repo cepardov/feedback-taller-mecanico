@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="models.beans.*, models.entity.*"%>
+<%@ page import="com.models.beans.*, com.models.entity.*"%>
 
-<jsp:useBean id="cliente" class="models.beans.Clientebeans" scope="request"></jsp:useBean>
+<jsp:useBean id="cliente" class="com.models.beans.Clientebeans" scope="request"></jsp:useBean>
 
 <jsp:setProperty property="rut" name="cliente" />
 <% Cliente cli = cliente.findByRut();%>
@@ -44,6 +44,10 @@
              <tr>
                 <td><span>Email</span></td>
                 <td><input type="text" name="email" value="<%=cli.getEmail()==null?"":cli.getEmail()%>"/></td>
+             </tr>
+              <tr>
+                <td colspan="2"><input type="submit" name="guardar" value="Guardar"/></td>
+            </tr>
         </tbody>
     </table>
 </form>
