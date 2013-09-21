@@ -53,7 +53,7 @@ public List<Cliente>findPorNombre(String nombre){
         }
 
         return listaProducto;
-   
+
 }    
     
     
@@ -98,7 +98,7 @@ public List<Cliente>findPorNombre(String nombre){
 
         try {
             // Componemos la sentencia SQL para obtener los productos.
-            String query = "SELECT * FROM cliente WHERE  rut = ?";
+            String query = "SELECT * FROM cliente WHERE  rutcliente = ?";
 
             // Ejecutamos la query y obtenemos el resultado.
             PreparedStatement stmt = getConnection().prepareStatement(query);
@@ -131,57 +131,62 @@ public List<Cliente>findPorNombre(String nombre){
         return cliente;
     }
 
-//    public void save(Cliente cliente) {
-//
-//        PreparedStatement saveProduct;
-//        try {
-//
-//            if (cliente.getRut() == null) {
-//                saveProduct = getConnection().prepareStatement(
-//                        "INSERT INTO cliente (rut, nombre, paterno, materno, precio ,cantidad) "
-//                        + "VALUES (?, ?, ?)");
-//                saveProduct.setString(1, producto.getNombre());
-//                saveProduct.setInt(2, producto.getPrecio());
-//                saveProduct.setInt(3, producto.getCantidad());
-//                System.out.println("INSERT INTO ....");
-//            } else {
-//                saveProduct = getConnection().prepareStatement(
-//                        "UPDATE productos SET nombre = ?, precio = ?, cantidad = ? WHERE  id = ?");
-//                saveProduct.setString(1, producto.getNombre());
-//                saveProduct.setInt(2, producto.getPrecio());
-//                saveProduct.setInt(3, producto.getCantidad());
-//                saveProduct.setInt(4, producto.getId());
-//            }
-//
-//            saveProduct.executeUpdate();
-//            closeConnection();
-//        } catch (SQLException se) {
-//            System.err.println("Se ha producido un error de BD.");
-//            System.err.println(se.getMessage());
-//        }
-//    }
-//
-//    public void delete(Producto producto) {
-//        PreparedStatement saveProduct;
-//        try {
-//
-//            if (producto.getId() > 0) {
-//                saveProduct = getConnection().prepareStatement(
-//                        "DELETE FROM productos WHERE id = ?");
-//
-//                saveProduct.setInt(1, producto.getId());
-//                saveProduct.executeUpdate();
-//            }
-//
-//
-//            closeConnection();
-//        } catch (SQLException se) {
-//            System.err.println("Se ha producido un error de BD.");
-//            System.err.println(se.getMessage());
-//        }
-//    }
-//
-//    protected void closeConnection() {
-//        DataBaseInstance.closeConnection();
-//    }
+    public void save(Cliente cliente) {
+
+        PreparedStatement saveProduct;
+        try {
+
+            if (cliente.getRut() == null) {
+                saveProduct = getConnection().prepareStatement(
+                        "INSERT INTO cliente (rutcliente, nombre, apellidop, apellidom, telefono , email) "
+                        + "VALUES (?, ?, ?, ?, ?, ?)");
+                saveProduct.setString(1, cliente.getRut());
+                saveProduct.setString(2, cliente.getNombre());
+                saveProduct.setString(3, cliente.getPaterno());
+                saveProduct.setString(4, cliente.getPaterno());
+                saveProduct.setInt(5, cliente.getTelefono());
+                saveProduct.setString(6, cliente.getEmail());
+                System.out.println("INSERT INTO ....");
+            } else {
+                saveProduct = getConnection().prepareStatement(
+                        "UPDATE productos SET rutcliente = ?, nombre = ?, apellidop = ?, apellidom = ?, telefono = ?, email = ? WHERE  id = ?");
+                saveProduct.setString(1, cliente.getRut());
+                saveProduct.setString(2, cliente.getNombre());
+                saveProduct.setString(3, cliente.getPaterno());
+                saveProduct.setString(4, cliente.getPaterno());
+                saveProduct.setInt(5, cliente.getTelefono());
+                saveProduct.setString(6, cliente.getEmail());
+            }
+
+            saveProduct.executeUpdate();
+            closeConnection();
+        } catch (SQLException se) {
+            System.err.println("Se ha producido un error de BD.");
+            System.err.println(se.getMessage());
+        }
+    }
+
+    public void delete(Cliente cliente) {
+        PreparedStatement saveProduct;
+        try {
+
+            if (cliente.getRut() != null) {
+                saveProduct = getConnection().prepareStatement(
+                        "DELETE FROM cliente WHERE rutcliente = ?");
+
+                saveProduct.setString(1, cliente.getRut());
+                saveProduct.executeUpdate();
+            }
+
+
+            closeConnection();
+        } catch (SQLException se) {
+            System.err.println("Se ha producido un error de BD.");
+            System.err.println(se.getMessage());
+        }
+    }
+
+    protected void closeConnection() {
+        DataBaseInstance.closeConnection();
+    }
 }

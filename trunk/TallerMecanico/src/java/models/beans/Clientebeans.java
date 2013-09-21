@@ -17,21 +17,21 @@ public class Clientebeans extends Cliente {
         return clienteDao.findAll();
     }
 
-//    public Cliente findById() {
-//        Cliente cliente = null;
-//        if (id > 0) {
-//            cliente = clienteDao.findById(id);
-//        } else {
-//            cliente = new Cliente();
-//        }
-//        return cliente;
-//    }
-//
-//    public void save() {
-//        clienteDao.save(this);
-//    }
-//
-//    public void delete() {
-//        clienteDao.delete(this);
-//    }
+    public Cliente findByRut() {
+        Cliente cliente = null;
+        if (rut != null) {
+            cliente = clienteDao.findByRut(rut);
+        } else {
+            cliente = new Cliente();
+        }
+        return cliente;
+    }
+
+    public void save() {
+        clienteDao.save(this);
+    }
+
+    public void delete() {
+        clienteDao.delete(this);
+    }
 }
