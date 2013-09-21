@@ -2,6 +2,6 @@
 
 package models.dao;
 
-public class clientedao {
+public class Clientedao {
     
 }
