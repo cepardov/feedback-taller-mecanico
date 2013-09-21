@@ -2,10 +2,10 @@
     pageEncoding="ISO-8859-1"%>
 <%@ page import="models.beans.*, models.entity.*"%>
 
-<jsp:useBean id="cliente" class="models.beans.clientebeans" scope="request"></jsp:useBean>
+<jsp:useBean id="cliente" class="models.beans.Clientebeans" scope="request"></jsp:useBean>
 
 <jsp:setProperty property="rut" name="cliente" />
-<% cliente cli = cliente.findById();%>
+<% Cliente cli = cliente.findByRut();%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

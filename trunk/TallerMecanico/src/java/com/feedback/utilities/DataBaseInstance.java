@@ -41,4 +41,3 @@ public class DataBaseInstance {
         }
     }
 }
-//Si ves esto es por que funciona la wea.
