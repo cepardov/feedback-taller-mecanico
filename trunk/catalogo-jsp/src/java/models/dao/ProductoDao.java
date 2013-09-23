@@ -51,7 +51,7 @@ public class ProductoDao {
 
         try {
             // Componemos la sentencia SQL para obtener los productos.
-            String query = "SELECT * APP.FROM productos WHERE  id = ?";
+            String query = "SELECT * FROM APP.productos WHERE  id = ?";
 
             // Ejecutamos la query y obtenemos el resultado.
             PreparedStatement stmt = getConnection().prepareStatement(query);
