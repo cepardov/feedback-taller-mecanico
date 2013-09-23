@@ -36,7 +36,7 @@
                     Emailin=request.getParameter("email");
                             }
         %>
-        <jsp:useBean id="Cliente1" class="models.entity.Cliente" scope="session"/>
+        <jsp:useBean id="Cliente1" class="models.entity.Cliente" scope="page"/>
         <jsp:setProperty name="Cliente1" property="rut" value="<%=Rutin%>"/>
         <jsp:setProperty name="Cliente1" property="nombre" value="<%=Nombrein%>"/>
         <jsp:setProperty name="Cliente1" property="paterno" value="<%=Apellidopin%>"/>
