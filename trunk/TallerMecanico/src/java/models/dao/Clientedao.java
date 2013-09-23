@@ -37,7 +37,7 @@ public List<Cliente>findPorNombre(String nombre){
                 cliente.setNombre(result.getString("nombre"));
                 cliente.setPaterno(result.getString("materno"));
                 cliente.setMaterno(result.getString("paterno"));
-                cliente.setTelefono(result.getInt("telefono"));
+                cliente.setTelefono(result.getString("telefono"));
                 cliente.setEmail(result.getString("email"));
                 listaProducto.add(cliente);
             }
@@ -74,7 +74,7 @@ public List<Cliente>findPorNombre(String nombre){
                 cliente.setNombre(result.getString("nombre"));
                 cliente.setPaterno(result.getString("paterno"));
                 cliente.setMaterno(result.getString("materno"));
-                cliente.setTelefono(result.getInt("telefono"));
+                cliente.setTelefono(result.getString("telefono"));
                 cliente.setEmail(result.getString("email"));
                 listaCliente.add(cliente);
             }
@@ -116,7 +116,7 @@ public List<Cliente>findPorNombre(String nombre){
             cliente.setNombre(result.getString("nombre"));
             cliente.setPaterno(result.getString("paterno"));
             cliente.setMaterno(result.getString("materno"));
-            cliente.setTelefono(result.getInt("telefono"));
+            cliente.setTelefono(result.getString("telefono"));
             cliente.setEmail(result.getString("email"));
 
             result.close();
@@ -144,7 +144,7 @@ public List<Cliente>findPorNombre(String nombre){
                 saveProduct.setString(2, cliente.getNombre());
                 saveProduct.setString(3, cliente.getPaterno());
                 saveProduct.setString(4, cliente.getPaterno());
-                saveProduct.setInt(5, cliente.getTelefono());
+                saveProduct.setString(5, cliente.getTelefono());
                 saveProduct.setString(6, cliente.getEmail());
                 System.out.println("INSERT INTO ....");
             } else {
@@ -154,7 +154,7 @@ public List<Cliente>findPorNombre(String nombre){
                 saveProduct.setString(2, cliente.getNombre());
                 saveProduct.setString(3, cliente.getPaterno());
                 saveProduct.setString(4, cliente.getPaterno());
-                saveProduct.setInt(5, cliente.getTelefono());
+                saveProduct.setString(5, cliente.getTelefono());
                 saveProduct.setString(6, cliente.getEmail());
             }
 
