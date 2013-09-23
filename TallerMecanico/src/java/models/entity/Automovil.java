@@ -2,13 +2,13 @@
 package models.entity;
 
 public class Automovil {
-    private String patente;
-    private String rutcliente;
-    private String color;
-    private int marca;
-    private int modelo;
-    private int año;
-    private int cilindrada;
+    protected String patente;
+    protected String rutcliente;
+    protected String color;
+    protected int marca;
+    protected int modelo;
+    protected int año;
+    protected int cilindrada;
 
     public String getPatente() {
         return patente;

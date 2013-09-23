@@ -13,7 +13,7 @@ public class Cliente {
     protected String nombre;
     protected String paterno;
     protected String materno;
-    protected int telefono;
+    protected String telefono;
     protected String email;
 
     public String getRut() {
@@ -48,11 +48,11 @@ public class Cliente {
         this.materno = materno;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -63,20 +63,20 @@ public class Cliente {
     public void setEmail(String email) {
         this.email = email;
     }
-      public String toString() {
-        StringBuffer buf = new StringBuffer();
-        buf.append("rut: ");
-        buf.append(getRut());
-        buf.append(" Nombre: ");
-        buf.append(getNombre());
-        buf.append(" Paterno: ");
-        buf.append(getPaterno());
-        buf.append(" Materno: ");
-        buf.append(getMaterno());
-        buf.append(" Telefono: ");
-        buf.append(Integer.toString(getTelefono()));
-        buf.append(" Email");
-        buf.append(getEmail());
-        return buf.toString();
-    }
+//      public String toString() {
+//        StringBuffer buf = new StringBuffer();
+//        buf.append("rut: ");
+//        buf.append(getRut());
+//        buf.append(" Nombre: ");
+//        buf.append(getNombre());
+//        buf.append(" Paterno: ");
+//        buf.append(getPaterno());
+//        buf.append(" Materno: ");
+//        buf.append(getMaterno());
+//        buf.append(" Telefono: ");
+//        buf.append(Integer.toString(getTelefono()));
+//        buf.append(" Email");
+//        buf.append(getEmail());
+//        return buf.toString();
+//    }
 }

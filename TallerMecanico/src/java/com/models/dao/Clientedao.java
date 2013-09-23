@@ -136,7 +136,7 @@ public List<Cliente>findPorNombre(String nombre){
 
             if (cliente.getRut() == null) {
                 saveCliente = getConnection().prepareStatement(
-                        "INSERT INTO cliente (rutcliente, nombre, apellidop, apellidom, telefono , email) "
+                        "INSERT INTO cliente (rut, nombre, paterno, materno, telefono , email) "
                         + "VALUES (?, ?, ?, ?, ?, ?)");
                 saveCliente.setString(1, cliente.getRut());
                 saveCliente.setString(2, cliente.getNombre());
@@ -147,8 +147,8 @@ public List<Cliente>findPorNombre(String nombre){
                 System.out.println("INSERT INTO ....");
             } else {
                 saveCliente = getConnection().prepareStatement(
-                        "UPDATE productos SET rutcliente = ?, nombre = ?, apellidop = ?,"
-                        + " apellidom = ?, telefono = ?, email = ? WHERE  rutcliente = ?");
+                        "UPDATE productos SET rut = ?, nombre = ?, paterno = ?,"
+                        + " materno = ?, telefono = ?, email = ? WHERE  rut = ?");
                 saveCliente.setString(1, cliente.getRut());
                 saveCliente.setString(2, cliente.getNombre());
                 saveCliente.setString(3, cliente.getPaterno());

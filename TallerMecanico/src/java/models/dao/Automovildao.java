@@ -19,7 +19,7 @@ public class Automovildao {
     }
 
 //falta modificar    
-public List<Automovil>findPorPatente(String nombre){
+public List<Automovil>findPorPatente(String patente){
         List<Automovil> listaAutomovil = new ArrayList<Automovil>();
         ResultSet result = null;
 
@@ -27,7 +27,7 @@ public List<Automovil>findPorPatente(String nombre){
 
             String query = "SELECT * FROM automovil WHERE patente LIKE ?";
             PreparedStatement stmt = getConnection().prepareStatement(query);
-            stmt.setString(1,"%"+nombre+"%");
+            stmt.setString(1,"%"+patente+"%");
             result = stmt.executeQuery();
 
             while (result.next()) {

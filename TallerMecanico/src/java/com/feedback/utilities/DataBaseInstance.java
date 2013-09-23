@@ -7,13 +7,13 @@ public class DataBaseInstance {
      private static java.sql.Connection conn;
     private static String login ="root";
     private static String password ="";
-    private static String url = "jdbc:mysql://localhost:3306/tallerm";
+    private static String url = "jdbc:derby://localhost:1527/tallermecanico";
 
     public static java.sql.Connection getInstanceConnection() {
         if (!(conn instanceof java.sql.Connection)) {
             System.out.println("Conectando a la BD.");
             try {
-                Class.forName("com.mysql.jdbc.Driver");
+                Class.forName("org.apache.derby.jdbc.ClientDriver");
                 conn = DriverManager.getConnection(url, login, password);
             } catch (ClassNotFoundException ex) {
                 System.out.println(ex.getMessage());
