@@ -6,7 +6,7 @@ package com.models.entity;
 
 /**
  *
- * @author Luis
+ * @author adolf
  */
 public class Automovil {
     protected String patente;
