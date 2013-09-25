@@ -35,7 +35,7 @@ public List<Automovil>findPorPatente(String patente){
                 automovil.setPatente(result.getString("Patente"));
                 automovil.setRutcliente(result.getString("rutcliente"));
                 automovil.setColor(result.getString("color"));
-                automovil.setMarca(result.getInt("materno"));
+                automovil.setMarca(result.getInt("marca"));
                 automovil.setModelo(result.getInt("modelo"));
                 automovil.setAño(result.getInt("año"));
                 automovil.setCilindrada(result.getInt("cilindrada"));
@@ -73,7 +73,7 @@ public List<Automovil>findPorPatente(String patente){
                 automovil.setPatente(result.getString("Patente"));
                 automovil.setRutcliente(result.getString("rutcliente"));
                 automovil.setColor(result.getString("color"));
-                automovil.setMarca(result.getInt("materno"));
+                automovil.setMarca(result.getInt("marca"));
                 automovil.setModelo(result.getInt("modelo"));
                 automovil.setAño(result.getInt("año"));
                 automovil.setCilindrada(result.getInt("cilindrada"));
